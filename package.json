@@ -1,6 +1,6 @@
 {
   "name": "buy-and-sell",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Куплю.Продам.",
   "main": "./src/service/service.js",
   "scripts": {

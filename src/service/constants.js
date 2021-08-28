@@ -5,6 +5,9 @@ const ExitCode = {
   failed: 1
 };
 
+const DEFAULT_USER_COMMAND = `--help`;
+
 module.exports = {
-  ExitCode
+  ExitCode,
+  DEFAULT_USER_COMMAND
 };
