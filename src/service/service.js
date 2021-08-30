@@ -1,5 +1,6 @@
 'use strict';
 
+const chalk = require(`chalk`);
 const {Cli, availableCommands} = require(`./cli`);
 const {ExitCode, DEFAULT_USER_COMMAND} = require(`./constants`);
 
@@ -13,6 +14,6 @@ const commandArguments = userArguments.slice(1);
 try {
   Cli[command].run(commandArguments);
 } catch (err) {
-  console.error(err.message);
+  console.log(chalk.red(err.message));
   process.exit(ExitCode.failed);
 }

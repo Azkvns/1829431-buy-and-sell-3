@@ -1,5 +1,6 @@
 'use strict';
 
+const chalk = require(`chalk`);
 const fs = require(`fs`);
 const {getRandomInt, shuffle} = require(`../utils`);
 const {CATEGORIES, SENTENCES, PictureRestrict, TITLES, OfferType, SumRestrict, DEFAULT_COUNT, FILE_NAME} = require(`./constants`);
@@ -41,7 +42,7 @@ module.exports = {
         throw new Error(`Не получилось записать данные в файл`);
       }
 
-      return console.info(`Успешная операция. Файл создан.`);
+      return console.log(chalk.green(`Успешная операция. Файл создан.`));
     });
 
   }
