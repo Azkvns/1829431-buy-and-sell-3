@@ -11,9 +11,13 @@ const [requestedCommand] = userArguments;
 const command = availableCommands.includes(requestedCommand) ? requestedCommand : DEFAULT_USER_COMMAND;
 const commandArguments = userArguments.slice(1);
 
-try {
-  Cli[command].run(commandArguments);
-} catch (err) {
-  console.log(chalk.red(err.message));
-  process.exit(ExitCode.failed);
-}
+const run = async () => {
+  try {
+    await Cli[command].run(commandArguments);
+  } catch (err) {
+    console.log(chalk.red(err.message));
+    process.exit(ExitCode.failed);
+  }
+};
+
+run();
