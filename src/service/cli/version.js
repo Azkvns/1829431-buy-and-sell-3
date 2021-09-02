@@ -1,5 +1,6 @@
 'use strict';
 
+const chalk = require(`chalk`);
 const packageFile = require(`../../../package.json`);
 
 module.exports = {
@@ -7,6 +8,6 @@ module.exports = {
   description: `выводит номер версии`,
   run() {
     const version = packageFile.version;
-    console.info(version);
+    console.log(chalk.blue(version));
   }
 };

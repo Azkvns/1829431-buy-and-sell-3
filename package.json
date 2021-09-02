@@ -1,6 +1,6 @@
 {
   "name": "buy-and-sell",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Куплю.Продам.",
   "main": "./src/service/service.js",
   "scripts": {
@@ -21,5 +21,8 @@
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-config-htmlacademy": "0.6.0"
+  },
+  "dependencies": {
+    "chalk": "4.1.2"
   }
 }

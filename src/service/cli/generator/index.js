@@ -1,6 +1,7 @@
 'use strict';
 
-const fs = require(`fs`);
+const chalk = require(`chalk`);
+const fs = require(`fs`).promises;
 const {getRandomInt, shuffle} = require(`../utils`);
 const {CATEGORIES, SENTENCES, PictureRestrict, TITLES, OfferType, SumRestrict, DEFAULT_COUNT, FILE_NAME} = require(`./constants`);
 
@@ -26,7 +27,7 @@ module.exports = {
   name: `--generate`,
   args: [`<count>`],
   description: `формирует файл mocks.json`,
-  run(args) {
+  async run(args) {
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
 
@@ -36,13 +37,11 @@ module.exports = {
 
     const content = JSON.stringify(generateOffers(countOffer));
 
-    fs.writeFile(FILE_NAME, content, (err) => {
-      if (err) {
-        throw new Error(`Не получилось записать данные в файл`);
-      }
-
-      return console.info(`Успешная операция. Файл создан.`);
-    });
-
+    try {
+      await fs.writeFile(FILE_NAME, content);
+      console.log(chalk.green(`Успешная операция. Файл создан.`));
+    } catch (err) {
+      throw new Error(`Не получилось записать данные в файл`);
+    }
   }
 };

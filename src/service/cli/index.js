@@ -7,6 +7,7 @@ const help = require(`./help`);
 const generate = require(`./generator`);
 
 const modules = [version, help, generate];
+const availableCommands = modules.map((module) => module.name);
 help.configure(modules, getRootFileName());
 
 const Cli = {};
@@ -16,5 +17,6 @@ modules.forEach((module) => {
 });
 
 module.exports = {
-  Cli
+  Cli,
+  availableCommands
 };
