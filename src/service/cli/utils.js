@@ -2,6 +2,8 @@
 
 const path = require(`path`);
 const packageFile = require(`../../../package.json`);
+const fs = require(`fs`).promises;
+const chalk = require(`chalk`);
 
 module.exports = {
   getLineWithIndentFromStart(str, indent, minIndent = 1) {
@@ -27,4 +29,14 @@ module.exports = {
 
     return someArray;
   },
+
+  async readContent(filePath) {
+    try {
+      const content = await fs.readFile(filePath, `utf8`);
+      return content.trim().split(`\r\n`);
+    } catch (err) {
+      console.error(chalk.red(err));
+      return [];
+    }
+  }
 };
